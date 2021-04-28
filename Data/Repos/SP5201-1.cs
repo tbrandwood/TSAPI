@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
-using Domain.Survey;
-using Domain.TripleS.V2;
+using Domain;
+using Domain.Interviews;
+using Domain.Metadata;
 
 namespace Data.Repos
 {
-    public class SP5201
+    public class Sp5201
     {
         #region "Metadata"
         public static SurveyMetadata ReadMetadata()
@@ -15,10 +16,10 @@ namespace Data.Repos
             metadata.Variables.Add(new Variable
             {
                 Ident = "1",
-                Type = Variable.VariableType.Quantity.ToString(),
+                Type = Enums.VariableType.Quantity,
                 Name = "RESPONDENT_ID",
                 Label = new Label("Respondent ID"),
-                Use = "serial",
+                Use = Enums.UseType.Serial,
                 Values = new VariableValues
                 {
                     Range = new ValueRange { From = "000001", To = "999999" }
@@ -30,7 +31,7 @@ namespace Data.Repos
             metadata.Variables.Add(new Variable
             {
                 Ident = "2",
-                Type = Variable.VariableType.Date.ToString(),
+                Type = Enums.VariableType.Date,
                 Name = "Q1.a",
                 Label = new Label("Date of visit"),
                 Values = new VariableValues
@@ -43,7 +44,7 @@ namespace Data.Repos
             metadata.Variables.Add(new Variable
             {
                 Ident = "3",
-                Type = Variable.VariableType.Time.ToString(),
+                Type = Enums.VariableType.Time,
                 Name = "Q1.b",
                 Label = new Label("Time of visit"),
                 //implicit range from="000000" to="235959"
@@ -53,18 +54,19 @@ namespace Data.Repos
             metadata.Variables.Add(new Variable
             {
                 Ident = "4",
-                Type = Variable.VariableType.Single.ToString(),
+                Type = Enums.VariableType.ClosedEnd,
+                MaxResponses = 1,
                 Name = "Q2",
                 Label = new Label("Frequency of visit",
-                    new AltLabel { Mode = "Interview", Text = "Have you visited here before?" },
-                    new AltLabel { Mode = "Analysis", Text = "Visited before" }),
+                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Have you visited here before?" },
+                    new AltLabel { Mode = Enums.AltLabelMode.Analysis, Text = "Visited before" }),
                 Values = new VariableValues
                 {
                     Values = new List<Value>
                     {
-                        new Value { Code = "0", Text = "No, this is the first visit" },
-                        new Value { Code = "1", Text = "I visited before within the year" },
-                        new Value { Code = "2", Text = "I visited before that" }
+                        new Value { Ident = "0", Code = "0", Label = new Label { Text = "No, this is the first visit" } },
+                        new Value { Ident = "1", Code = "1", Label = new Label { Text = "I visited before within the year" }},
+                        new Value { Ident = "2", Code = "2", Label = new Label { Text = "I visited before that" }}
                     }
                 }
             });
@@ -74,19 +76,22 @@ namespace Data.Repos
             metadata.Variables.Add(new Variable
             {
                 Ident = "5",
-                Type = Variable.VariableType.Multiple.ToString(),
+                Type = Enums.VariableType.ClosedEnd,
+                MaxResponses = 8,
                 Name = "Q3",
                 Label = new Label("Attractions visited"),
                 Values = new VariableValues
                 {
                     Values = new List<Value>
                     {
-                        new Value { Code = "1", Text = "Sherwood Forest" },
-                        new Value { Code = "2", Text = "Nottingham Castle" },
-                        new Value { Code = "3", Text = "\"Friar Tuck\"; Restaurant" },
-                        new Value { Code = "4", Text = "\"Maid Marion\" Cafe" },
-                        new Value { Code = "5", Text = "Mining museum" },
-                        new Value { Code = "9", Text = "Other" },
+                        new Value { Ident = "1", Code = "1", Label = new Label { Text = "Sherwood Forest" }},
+                        new Value { Ident = "2", Code = "2", Label = new Label { Text = "Nottingham Castle" }},
+                        new Value { Ident = "3", Code = "3", Label = new Label { Text = "\"Friar Tuck\"; Restaurant" }},
+                        new Value { Ident = "4", Code = "4", Label = new Label { Text = "\"Maid Marion\" Cafe" }},
+                        new Value { Ident = "5", Code = "5", Label = new Label { Text = "Mining museum" }},
+                        new Value { Ident = "9", Code = "9", Label = new Label { Text = "Other" }},
+                        new Value { Ident = "10", Code = "10", Label = new Label { Text = "Other" }},
+                        new Value { Ident = "11", Code = "11", Label = new Label { Text = "Other" }}
                     }
                 }
             });
@@ -95,7 +100,10 @@ namespace Data.Repos
             metadata.Variables.Add(new Variable
             {
                 Ident = "6",
-                Type = Variable.VariableType.Character.ToString(),
+                Type = Enums.VariableType.Character,
+                ParentType = Enums.ParentType.OtherSpecify,
+                ParentIdent = "5",
+                MaxResponses = 3,
                 Name = "Q3.a",
                 Label = new Label("Other attractions visited")
             });
@@ -105,19 +113,19 @@ namespace Data.Repos
             metadata.Variables.Add(new Variable
             {
                 Ident = "7",
-                Type = Variable.VariableType.Single.ToString(),
+                Type = Enums.VariableType.ClosedEnd,
                 Name = "Q4",
                 Label = new Label("Overall impression"),
                 Values = new VariableValues
                 {
                     Values = new List<Value>
                     {
-                        new Value { Code = "1", Score = 2, Text = "Very Good" },
-                        new Value { Code = "2", Score = 1, Text = "Good" },
-                        new Value { Code = "3", Score = 0, Text = "OK" },
-                        new Value { Code = "4", Score = -1, Text = "Poor" },
-                        new Value { Code = "5", Score = -2, Text = "Very poor" },
-                        new Value { Code = "9", Text = "DK/NS" },
+                        new Value { Ident = "1", Code = "1", Score = 2, Label = new Label  { Text = "Very Good" }},
+                        new Value { Ident = "2", Code = "2", Score = 1, Label = new Label  { Text = "Good" }},
+                        new Value { Ident = "3", Code = "3", Score = 0, Label = new Label  { Text = "OK" }},
+                        new Value { Ident = "4", Code = "4", Score = -1, Label = new Label { Text = "Poor" }},
+                        new Value { Ident = "5", Code = "5", Score = -2, Label = new Label { Text = "Very poor" }},
+                        new Value { Ident = "6", Code = "9", Label = new Label { Text = "DK/NS" } }
                     }
                 }
             });
@@ -127,19 +135,21 @@ namespace Data.Repos
             metadata.Variables.Add(new Variable
             {
                 Ident = "8",
-                Type = Variable.VariableType.Multiple.ToString(),
+                Type = Enums.VariableType.ClosedEnd,
                 Name = "Q5",
                 Label = new Label("Two favourite attractions visited"),
                 Values = new VariableValues
                 {
                     Values = new List<Value>
                     {
-                        new Value { Code = "1", Text = "Sherwood Forest" },
-                        new Value { Code = "2", Text = "Nottingham Castle" },
-                        new Value { Code = "3", Text = "\"Friar Tuck\"; Restaurant" },
-                        new Value { Code = "4", Text = "\"Maid Marion\" Cafe" },
-                        new Value { Code = "5", Text = "Mining museum" },
-                        new Value { Code = "9", Text = "Other" },
+                        new Value { Ident = "1", Code = "1", Label = new Label {Text = "Sherwood Forest" }},
+                        new Value { Ident = "2", Code = "2", Label = new Label {Text = "Nottingham Castle" }},
+                        new Value { Ident = "3", Code = "3", Label = new Label {Text = "\"Friar Tuck\"; Restaurant" }},
+                        new Value { Ident = "4", Code = "4", Label = new Label {Text = "\"Maid Marion\" Cafe" }},
+                        new Value { Ident = "5", Code = "5", Label = new Label {Text = "Mining museum" }},
+                        new Value { Ident = "9", Code = "9", Label = new Label {Text = "Other" }},
+                        new Value { Ident = "10", Code = "10", Label = new Label { Text = "Other" }},
+                        new Value { Ident = "11", Code = "11", Label = new Label { Text = "Other" }}
                     }
                 }
             });
@@ -149,7 +159,7 @@ namespace Data.Repos
             metadata.Variables.Add(new Variable
             {
                 Ident = "9",
-                Type = Variable.VariableType.Quantity.ToString(),
+                Type = Enums.VariableType.Quantity,
                 Name = "Q6",
                 Label = new Label("Miles travelled"),
                 Values = new VariableValues
@@ -157,8 +167,8 @@ namespace Data.Repos
                     Range = new ValueRange { From = "1", To = "499" },
                     Values = new List<Value>
                     {
-                        new Value { Code = "500", Text = "500 or more" },
-                        new Value { Code = "999", Text = "Not stated" }
+                        new Value { Ident = "500", Code = "500", Label = new Label { Text = "500 or more" }},
+                        new Value { Ident = "999", Code = "999", Label = new Label { Text = "Not stated" }}
                     }
                 }
             });
@@ -168,7 +178,7 @@ namespace Data.Repos
             metadata.Variables.Add(new Variable
             {
                 Ident = "10",
-                Type = Variable.VariableType.Logical.ToString(),
+                Type = Enums.VariableType.Logical,
                 Name = "Q7",
                 Label = new Label("Would come again")
             });
@@ -178,29 +188,196 @@ namespace Data.Repos
             metadata.Variables.Add(new Variable
             {
                 Ident = "11",
-                Type = Variable.VariableType.Single.ToString(),
+                Type = Enums.VariableType.ClosedEnd,
                 Name = "Q8",
                 Label = new Label("When is that most likely to be"),
-                Filter = "Q7",
+                //Filter = "Q7",
                 Values = new VariableValues
                 {
                     Values = new List<Value>
                     {
-                        new Value { Code = "A", Text = "Within 3 months" },
-                        new Value { Code = "B", Text = "Between 3 months and 1 year" },
-                        new Value { Code = "C", Text = "More than 1 years time" },
+                        new Value { Ident = "A", Code = "A", Label = new Label  {Text = "Within 3 months" }},
+                        new Value { Ident = "B", Code = "B", Label = new Label {Text = "Between 3 months and 1 year" }},
+                        new Value { Ident = "C", Code = "C", Label = new Label {Text = "More than 1 years time" }},
                     }
                 }
             });
+
+
+            //Q9 - Grid
+            metadata.Variables.Add(new Variable
+            {
+                Ident = "12",
+                Type = Enums.VariableType.ClosedEnd,
+                Name = "Q9",
+                Label = new Label("Grid"),
+                Values = new VariableValues
+                {
+                    Values = new List<Value>
+                    {
+                        new Value { Ident = "1", Code = "1", Label = new Label {Text = "Sherwood Forest" }},
+                        new Value { Ident = "2", Code = "2", Label = new Label {Text = "Nottingham Castle" }},
+                        new Value { Ident = "3", Code = "3", Label = new Label {Text = "\"Friar Tuck\"; Restaurant" }},
+                        new Value { Ident = "4", Code = "4", Label = new Label {Text = "\"Maid Marion\" Cafe" }},
+                        new Value { Ident = "5", Code = "5", Label = new Label {Text = "Mining museum" }},
+                        new Value { Ident = "9", Code = "9", Label = new Label {Text = "Other" }},
+                        new Value { Ident = "10", Code = "10", Label = new Label { Text = "Other" }},
+                        new Value { Ident = "11", Code = "11", Label = new Label { Text = "Other" }}
+                    }
+                }
+            });
+
+            //Q10 
+            metadata.Variables.Add(new Variable
+            {
+                Ident = "13",
+                Type = Enums.VariableType.ClosedEnd,
+                ParentType = Enums.ParentType.Grid,
+                ParentIdent = "12",
+                MaxResponses = 1,
+                Name = "Q10",
+                Label = new Label("Overall Favourite")
+            });
+
+            //Q11
+            metadata.Variables.Add(new Variable
+            {
+                Ident = "14",
+                Type = Enums.VariableType.ClosedEnd,
+                ParentType = Enums.ParentType.Grid,
+                ParentIdent = "12",
+                MaxResponses = 1,
+                Name = "Q11",
+                Label = new Label("Value for Money"),
+                Values = new VariableValues
+                {
+                    Values = new List<Value>
+                    {
+                        new Value { Ident = "1", Code = "1", Label = new Label {Text = "Very Good" }, Score = 2},
+                        new Value { Ident = "2", Code = "2", Label = new Label {Text = "Good" }, Score = 1},
+                        new Value { Ident = "3", Code = "3", Label = new Label {Text = "Average" }, Score = 0},
+                        new Value { Ident = "4", Code = "4", Label = new Label {Text = "Poor" }, Score = -1},
+                        new Value { Ident = "5", Code = "5", Label = new Label {Text = "Very Poor" }, Score = -2}
+                    }
+                }
+            });
+
+            //Q12
+            metadata.Variables.Add(new Variable
+            {
+                Ident = "15",
+                Type = Enums.VariableType.ClosedEnd,
+                ParentType = Enums.ParentType.Grid,
+                ParentIdent = "12",
+                MaxResponses = 9,
+                Name = "Q12",
+                Label = new Label("Fun")
+            });
+
+            //Q13
+            metadata.Variables.Add(new Variable
+            {
+                Ident = "16",
+                Type = Enums.VariableType.ClosedEnd,
+                ParentType = Enums.ParentType.Grid,
+                ParentIdent = "12",
+                MaxResponses = 9,
+                Name = "Q13",
+                Label = new Label("Educational")
+            });
+
+            //Q14
+            metadata.Variables.Add(new Variable
+            {
+                Ident = "17",
+                Type = Enums.VariableType.ClosedEnd,
+                ParentType = Enums.ParentType.Grid,
+                ParentIdent = "12",
+                MaxResponses = 9,
+                Name = "Q14",
+                Label = new Label("Boring")
+            });
+
+            //Q15
+            metadata.Variables.Add(new Variable
+            {
+                Ident = "18",
+                Type = Enums.VariableType.ClosedEnd,
+                ParentType = Enums.ParentType.Grid,
+                ParentIdent = "12",
+                MaxResponses = 9,
+                Name = "Q15",
+                Label = new Label("Long Queues")
+            });
+
+
+            //Q16 - Loop
+            metadata.Variables.Add(new Variable
+            {
+                Ident = "19",
+                Type = Enums.VariableType.Loop,
+                Name = "Q16",
+                Label = new Label("Loop"),
+                Values = new VariableValues
+                {
+                    Values = new List<Value>
+                    {
+                        new Value { Ident = "1", Code = "1", Label = new Label {Text = "Sherwood Forest" }},
+                        new Value { Ident = "2", Code = "2", Label = new Label {Text = "Nottingham Castle" }},
+                        new Value { Ident = "3", Code = "3", Label = new Label {Text = "\"Friar Tuck\"; Restaurant" }},
+                        new Value { Ident = "4", Code = "4", Label = new Label {Text = "\"Maid Marion\" Cafe" }},
+                        new Value { Ident = "5", Code = "5", Label = new Label {Text = "Mining museum" }},
+                        new Value { Ident = "9", Code = "9", Label = new Label {Text = "Other" }},
+                        new Value { Ident = "10", Code = "10", Label = new Label { Text = "Other" }},
+                        new Value { Ident = "11", Code = "11", Label = new Label { Text = "Other" }}
+                    }
+                }
+            });
+
+
+            //Q17
+            metadata.Variables.Add(new Variable
+            {
+                Ident = "20",
+                Type = Enums.VariableType.Character,
+                ParentType = Enums.ParentType.Loop,
+                ParentIdent = "19",
+                Name = "Q17",
+                Label = new Label("Why was [Attraction] one of your favourites?")
+            });
+
+
+            //Q18
+            metadata.Variables.Add(new Variable
+            {
+                Ident = "21",
+                Type = Enums.VariableType.ClosedEnd,
+                ParentType = Enums.ParentType.Loop,
+                ParentIdent = "19",
+                Name = "Q18",
+                Label = new Label("Q18 How likely are you to come back to see [Attraction] again?"),
+                Values = new VariableValues
+                {
+                    Values = new List<Value>
+                    {
+                        new Value { Ident = "1", Code = "1", Label = new Label {Text = "Very Likely" }, Score = 2},
+                        new Value { Ident = "2", Code = "2", Label = new Label {Text = "Likely" }, Score = 1},
+                        new Value { Ident = "3", Code = "3", Label = new Label {Text = "Neither" }, Score = 0},
+                        new Value { Ident = "4", Code = "4", Label = new Label {Text = "Unlikely" }, Score = -1},
+                        new Value { Ident = "5", Code = "5", Label = new Label {Text = "Very Unlikely" }, Score = -2}
+                    }
+                }
+            });
+
 
             //WT
             metadata.Variables.Add(new Variable
             {
                 Ident = "999999",
-                Type = Variable.VariableType.Quantity.ToString(),
+                Type = Enums.VariableType.Quantity,
                 Name = "WT",
                 Label = new Label("Record weight"),
-                Use = "weight",
+                Use = Enums.UseType.Weight,
                 Values = new VariableValues
                 {
                     Range = new ValueRange { From = "0.0000", To = "99.9999" }

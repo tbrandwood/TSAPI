@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Domain.Survey
+namespace Domain.Interviews
 {
     public class SurveyDetail
     {

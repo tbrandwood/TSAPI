@@ -1,4 +1,4 @@
-﻿namespace Domain.TripleS.V2
+﻿namespace Domain.Metadata
 {
     public class Hierarchy
     {

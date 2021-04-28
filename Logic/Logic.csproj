@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Command\CommandHandlers\" />
     <Folder Include="Query\" />
   </ItemGroup>
 

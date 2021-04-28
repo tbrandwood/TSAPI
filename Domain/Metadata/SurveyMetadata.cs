@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain.TripleS.V2
+namespace Domain.Metadata
 {
     public class SurveyMetadata : SurveyMetadataBase
     {

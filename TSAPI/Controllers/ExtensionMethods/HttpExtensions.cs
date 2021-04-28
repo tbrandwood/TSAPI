@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security;
-using System.Threading.Tasks;
+﻿using System.Security;
 using Microsoft.AspNetCore.Http;
+using Domain;
 
 namespace TSAPI.Controllers.ExtensionMethods
 {
@@ -12,10 +9,10 @@ namespace TSAPI.Controllers.ExtensionMethods
 
         public static string GetApiKey(this HttpRequest request)
         {
-            if (!request.Headers.ContainsKey("Authorisation"))
+            if (!request.Headers.ContainsKey(Consts.APiKeyHeaderName))
                 throw new SecurityException("Autorisation header not found in request");
                 
-            return request.Headers["Authorisation"];
+            return request.Headers[Consts.APiKeyHeaderName];
         }
     }
 }

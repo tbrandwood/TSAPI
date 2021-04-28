@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Domain.Survey
+﻿namespace Domain.Interviews
 {
     public class HierarchicalInterview : Interview
     {

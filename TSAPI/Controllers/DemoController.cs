@@ -28,23 +28,23 @@ namespace TSAPI.Controllers
         }
         #endregion
 
-        /// <summary>Creates an account in this demo API</summary>
-        /// <param name="companyName"></param>
-        /// <returns></returns>
-        [HttpPost]
-        [Route("/Demo/")]
-        public async Task<CreateAccountResult> CreateAccount(string companyName)
-        {
-            //TODO: Add in Automapper
-            var command = new CreateAccount
-            {
-                ApiKey = Request.GetApiKey(),
-                CompanyName = companyName
-            };
+        ///// <summary>Creates an account in this demo API</summary>
+        ///// <param name="companyName"></param>
+        ///// <returns></returns>
+        //[HttpPost]
+        //[Route("/Demo/")]
+        //public async Task<CreateAccountResult> CreateAccount(string companyName)
+        //{
+        //    //TODO: Add in Automapper
+        //    var command = new CreateAccount
+        //    {
+        //        //ApiKey = Request.GetApiKey(),
+        //        CompanyName = companyName
+        //    };
 
-            var result = (CreateAccountCommandResult) await _commandDispatcher.HandleAsync(command);
-            return new CreateAccountResult();
-        }
+        //    var result = (CreateAccountCommandResult) await _commandDispatcher.HandleAsync(command);
+        //    return new CreateAccountResult();
+        //}
 
 
         //Delete Project

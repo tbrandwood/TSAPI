@@ -1,28 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Domain.TripleS.V2
+namespace Domain.Metadata
 {
     public class Variable 
     {
-        public enum VariableType
-        {
-            Single,
-            Multiple,
-            Quantity,
-            Character,
-            Logical,
-            Date,
-            Time
-        }
-
         public string Ident { get; set; }
-        public string Type { get; set; }
+        public Enums.VariableType Type { get; set; }
+        public int MaxResponses { get; set; }
         public string Name { get; set; }
         public Label Label { get; set; }
-        public string Filter { get; set; }
-        public string Use { get; set; }
+        public Enums.UseType Use { get; set; }
+        //public string Filter { get; set; }
+        //public Enums.Format Format { get; set; }
         public VariableValues Values { get; set; }
+        public Enums.ParentType ParentType { get; set; }
+        public string ParentIdent { get; set; }
     }
 
     public class VariableValues
@@ -33,8 +26,9 @@ namespace Domain.TripleS.V2
 
     public class Value
     {
+        public string Ident { get; set; }
         public string Code { get; set; }
-        public string Text { get; set; }
+        public Label Label { get; set; }
         public int? Score { get; set; }
     }
 
@@ -56,7 +50,9 @@ namespace Domain.TripleS.V2
 
     public class AltLabel
     {
-        public string Mode { get; set; }
+        public Enums.AltLabelMode Mode { get; set; }
         public string Text { get; set; }
+        public string Lang { get; set; }
+
     }
 }
