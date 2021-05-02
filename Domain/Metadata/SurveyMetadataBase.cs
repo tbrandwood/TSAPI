@@ -6,7 +6,7 @@ namespace Domain.Metadata
     {
         public string Name { get; set; }
         public string Title { get; set; }
-        public List<Variable> Variables { get; set; } = new List<Variable>();
+        public List<Question> Variables { get; set; } = new List<Question>();
         public int InterviewCount { get; set; }
     }
 }

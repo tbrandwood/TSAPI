@@ -19,7 +19,7 @@
 //                Name = "hnumber",
 //                Label = new Label("Household"),
 //                Use = "serial",
-//                Values = new VariableValues
+//                Values = new QuestionValues
 //                {
 //                    Range = new ValueRange { From = "000001", To = "999999" }
 //                }
@@ -32,7 +32,7 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "htype",
 //                Label = new Label("House type"),
-//                Values = new VariableValues
+//                Values = new QuestionValues
 //                {
 //                    Values = new List<Value>
 //                        {
@@ -51,7 +51,7 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "hlocation",
 //                Label = new Label("House location"),
-//                Values = new VariableValues
+//                Values = new QuestionValues
 //                {
 //                    Values = new List<Value>
 //                        {
@@ -87,7 +87,7 @@
 //                Type = Variable.VariableType.Quantity,
 //                Name = "hnumber",
 //                Label = new Label("Household"),
-//                Values = new VariableValues
+//                Values = new QuestionValues
 //                {
 //                    Range = new ValueRange { From = "000001", To = "999999" }
 //                }
@@ -101,7 +101,7 @@
 //                Name = "pnumber",
 //                Label = new Label("Person"),
 //                Use = "Serial",
-//                Values = new VariableValues
+//                Values = new QuestionValues
 //                {
 //                    Range = new ValueRange { From = "000001", To = "999999" }
 //                }
@@ -114,7 +114,7 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "pgender",
 //                Label = new Label("Gender"),
-//                Values = new VariableValues
+//                Values = new QuestionValues
 //                {
 //                    Values = new List<Value>
 //                    {
@@ -131,7 +131,7 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "page",
 //                Label = new Label("Age"),
-//                Values = new VariableValues
+//                Values = new QuestionValues
 //                {
 //                    Values = new List<Value>
 //                    {
@@ -160,7 +160,7 @@
 //                Type = Variable.VariableType.Quantity,
 //                Name = "pnumber",
 //                Label = new Label("Person"),
-//                Values = new VariableValues
+//                Values = new QuestionValues
 //                {
 //                    Range = new ValueRange { From = "000001", To = "99999919" }
 //                }
@@ -173,7 +173,7 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "tpurpose",
 //                Label = new Label("Trip purpose"),
-//                Values = new VariableValues
+//                Values = new QuestionValues
 //                {
 //                    Values = new List<Value>
 //                    {
@@ -191,7 +191,7 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "tmode",
 //                Label = new Label("Modes of travel"),
-//                Values = new VariableValues
+//                Values = new QuestionValues
 //                {
 //                    Values = new List<Value>
 //                    {
