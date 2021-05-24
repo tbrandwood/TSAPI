@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using Domain.Metadata;
 using Domain;
 using Domain.Interviews;
-using Domain.Metadata;
 
 namespace Data.Repos
 {
@@ -10,17 +10,29 @@ namespace Data.Repos
         #region "Metadata"
         public static SurveyMetadata ReadMetadata()
         {
-            var metadata = new SurveyMetadata { Name = "SP5201-1", Title = "Historic House Exit Survey<br/>First Wave", InterviewCount = 3};
+            var metadata = new SurveyMetadata
+            {
+                Name = "SP5201-1",
+                Title = "Historic House Exit Survey<br/>First Wave",
+                InterviewCount = 3,
+                Languages = new List<Language>
+                {
+                    new Language {Ident = "FR", Name = "French"}, 
+                    new Language {Ident = "EN", Name = "English"}
+                }
+            };
+
+            //Available languages 
 
             //Respondent ID
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "1",
                 Type = Enums.VariableType.Quantity,
                 Name = "RESPONDENT_ID",
                 Label = new Label("Respondent ID"),
                 Use = Enums.UseType.Serial,
-                Values = new QuestionValues
+                VariableValues = new VariableValues
                 {
                     Range = new ValueRange { From = "000001", To = "999999" }
                 }
@@ -28,20 +40,20 @@ namespace Data.Repos
 
 
             //Q1.a
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "2",
                 Type = Enums.VariableType.Date,
                 Name = "Q1.a",
                 Label = new Label("Date of visit"),
-                Values = new QuestionValues
+                VariableValues = new VariableValues
                 {
                     Range = new ValueRange { From = "20160101", To = "20161231" }
                 }
             });
 
             //Q1.b
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "3",
                 Type = Enums.VariableType.Time,
@@ -51,36 +63,59 @@ namespace Data.Repos
             });
 
             //Q2
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "4",
-                Type = Enums.VariableType.ClosedEnd,
-                MaxResponses = 1,
+                Type = Enums.VariableType.Single,
                 Name = "Q2",
                 Label = new Label("Frequency of visit",
-                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Have you visited here before?" },
-                    new AltLabel { Mode = Enums.AltLabelMode.Analysis, Text = "Visited before" }),
-                Values = new QuestionValues
+                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Have you visited here before?", LangIdent = "EN" },
+                    new AltLabel { Mode = Enums.AltLabelMode.Analysis, Text = "Visited before", LangIdent = "EN" },
+                    new AltLabel { Mode = Enums.AltLabelMode.Interview, Text = "Avez-vous déjà visité ici?", LangIdent = "FR" },
+                    new AltLabel { Mode = Enums.AltLabelMode.Analysis, Text = "Visité avant", LangIdent = "FR" }),
+                VariableValues = new VariableValues
                 {
                     Values = new List<Value>
                     {
-                        new Value { Ident = "0", Code = "0", Label = new Label { Text = "No, this is the first visit" } },
-                        new Value { Ident = "1", Code = "1", Label = new Label { Text = "I visited before within the year" }},
-                        new Value { Ident = "2", Code = "2", Label = new Label { Text = "I visited before that" }}
+                        new Value { Ident = "0", Code = "0", Label = new Label
+                        {
+                            Text = "No, this is the first visit",
+                            AltLabels = new List<AltLabel>
+                            {
+                                new AltLabel { LangIdent = "FR", Mode = Enums.AltLabelMode.Interview, Text = "Non, c'est la première visite" }
+                            }
+
+                        } },
+                        new Value { Ident = "1", Code = "1", Label = new Label
+                        {
+                            Text = "I visited before within the year",
+                            AltLabels = new List<AltLabel>
+                            {
+                                new AltLabel { LangIdent = "FR", Mode = Enums.AltLabelMode.Interview, Text = "J'ai visité avant dans l'année" }
+                            }
+                        }},
+                        new Value { Ident = "2", Code = "2", Label = new Label
+                        {
+                            Text = "I visited before that",
+                            AltLabels = new List<AltLabel>
+                            {
+                                new AltLabel { LangIdent = "FR", Mode = Enums.AltLabelMode.Interview, Text = "J'ai visité avant ça" }
+                            }
+                        }}
                     }
                 }
             });
 
 
             //Q3
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "5",
-                Type = Enums.VariableType.ClosedEnd,
+                Type = Enums.VariableType.Multiple,
                 MaxResponses = 8,
                 Name = "Q3",
                 Label = new Label("Attractions visited"),
-                Values = new QuestionValues
+                VariableValues = new VariableValues
                 {
                     Values = new List<Value>
                     {
@@ -95,9 +130,9 @@ namespace Data.Repos
                     }
                 },
                 //Q3.a
-                Questions = new List<Question>
+                Questions = new List<Variable>
                 {
-                    new Question
+                    new Variable
                     {
                         Ident = "6",
                         Type = Enums.VariableType.Character,
@@ -112,13 +147,13 @@ namespace Data.Repos
 
 
             //Q4
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "7",
-                Type = Enums.VariableType.ClosedEnd,
+                Type = Enums.VariableType.Single,
                 Name = "Q4",
                 Label = new Label("Overall impression"),
-                Values = new QuestionValues
+                VariableValues = new VariableValues
                 {
                     Values = new List<Value>
                     {
@@ -134,13 +169,14 @@ namespace Data.Repos
 
 
             //Q5
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "8",
-                Type = Enums.VariableType.ClosedEnd,
+                Type = Enums.VariableType.Multiple,
+                MaxResponses = 2,
                 Name = "Q5",
                 Label = new Label("Two favourite attractions visited"),
-                Values = new QuestionValues
+                VariableValues = new VariableValues
                 {
                     Values = new List<Value>
                     {
@@ -158,13 +194,13 @@ namespace Data.Repos
 
 
             //Q6
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "9",
                 Type = Enums.VariableType.Quantity,
                 Name = "Q6",
                 Label = new Label("Miles travelled"),
-                Values = new QuestionValues
+                VariableValues = new VariableValues
                 {
                     Range = new ValueRange { From = "1", To = "499" },
                     Values = new List<Value>
@@ -177,7 +213,7 @@ namespace Data.Repos
 
 
             //Q7
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "10",
                 Type = Enums.VariableType.Logical,
@@ -187,14 +223,14 @@ namespace Data.Repos
 
 
             //Q8
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "11",
-                Type = Enums.VariableType.ClosedEnd,
+                Type = Enums.VariableType.Single,
                 Name = "Q8",
                 Label = new Label("When is that most likely to be"),
                 //Filter = "Q7",
-                Values = new QuestionValues
+                VariableValues = new VariableValues
                 {
                     Values = new List<Value>
                     {
@@ -207,13 +243,13 @@ namespace Data.Repos
 
 
             //Q9 - Grid
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "12",
-                Type = Enums.VariableType.ClosedEnd,
+                Type = Enums.VariableType.Single,
                 Name = "Q9",
                 Label = new Label("Grid"),
-                Values = new QuestionValues
+                VariableValues = new VariableValues
                 {
                     Values = new List<Value>
                     {
@@ -228,28 +264,26 @@ namespace Data.Repos
                     }
                 },
 
-                Questions = new List<Question>
+                Questions = new List<Variable>
                 {
                     //Q10
-                    new Question
+                    new Variable
                     {
                         Ident = "13",
-                        Type = Enums.VariableType.ClosedEnd,
+                        Type = Enums.VariableType.Single,
                         ParentType = Enums.ParentType.Grid,
-                        MaxResponses = 1,
                         Name = "Q10",
                         Label = new Label("Overall Favourite")
                     },
                     //Q11
-                    new Question
+                    new Variable
                     {
                         Ident = "14",
-                        Type = Enums.VariableType.ClosedEnd,
+                        Type = Enums.VariableType.Single,
                         ParentType = Enums.ParentType.Grid,
-                        MaxResponses = 1,
                         Name = "Q11",
                         Label = new Label("Value for Money"),
-                        Values = new QuestionValues
+                        VariableValues = new VariableValues
                         {
                             Values = new List<Value>
                             {
@@ -262,40 +296,40 @@ namespace Data.Repos
                         }
                     },
                     //Q12
-                    new Question
+                    new Variable
                     {
                         Ident = "15",
-                        Type = Enums.VariableType.ClosedEnd,
+                        Type = Enums.VariableType.Multiple,
                         ParentType = Enums.ParentType.Grid,
                         MaxResponses = 9,
                         Name = "Q12",
                         Label = new Label("Fun")
                     },
                     //Q13
-                    new Question
+                    new Variable
                     {
                         Ident = "16",
-                        Type = Enums.VariableType.ClosedEnd,
+                        Type = Enums.VariableType.Multiple,
                         ParentType = Enums.ParentType.Grid,
                         MaxResponses = 9,
                         Name = "Q13",
                         Label = new Label("Educational")
                     },
                     //Q14
-                    new Question
+                    new Variable
                     {
                         Ident = "17",
-                        Type = Enums.VariableType.ClosedEnd,
+                        Type = Enums.VariableType.Multiple,
                         ParentType = Enums.ParentType.Grid,
                         MaxResponses = 9,
                         Name = "Q14",
                         Label = new Label("Boring")
                     },
                     //Q15
-                    new Question
+                    new Variable
                     {
                         Ident = "18",
-                        Type = Enums.VariableType.ClosedEnd,
+                        Type = Enums.VariableType.Multiple,
                         ParentType = Enums.ParentType.Grid,
                         MaxResponses = 9,
                         Name = "Q15",
@@ -306,13 +340,13 @@ namespace Data.Repos
             });
 
             //Q16 - Loop
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "19",
                 Type = Enums.VariableType.Loop,
                 Name = "Q16",
                 Label = new Label("Loop"),
-                Values = new QuestionValues
+                VariableValues = new VariableValues
                 {
                     Values = new List<Value>
                     {
@@ -326,10 +360,10 @@ namespace Data.Repos
                         new Value { Ident = "11", Code = "11", Label = new Label { Text = "Other" }}
                     }
                 },
-                Questions = new List<Question>
+                Questions = new List<Variable>
                 {
                     //Q17
-                    new Question
+                    new Variable
                     {
                         Ident = "20",
                         Type = Enums.VariableType.Character,
@@ -339,14 +373,14 @@ namespace Data.Repos
                     },
 
                     //Q18
-                    new Question
+                    new Variable
                     {
                         Ident = "21",
-                        Type = Enums.VariableType.ClosedEnd,
+                        Type = Enums.VariableType.Single,
                         ParentType = Enums.ParentType.Loop,
                         Name = "Q18",
                         Label = new Label("Q18 How likely are you to come back to see [Attraction] again?"),
-                        Values = new QuestionValues
+                        VariableValues = new VariableValues
                         {
                             Values = new List<Value>
                             {
@@ -362,15 +396,35 @@ namespace Data.Repos
 
             });
 
+
+            //Language
+            metadata.Variables.Add(new Variable
+            {
+                Ident = "22",
+                Type = Enums.VariableType.Single,
+                Use = Enums.UseType.Language,
+                Name = "Language",
+                Label = new Label("Language"),
+                VariableValues = new VariableValues
+                {
+                    Values = new List<Value>
+                    {
+                        new Value {Ident = "FR", Code = "FR", Label = new Label {Text = "French"}},
+                        new Value {Ident = "EN", Code = "EN", Label = new Label {Text = "English"}}
+                    }
+                }
+            });
+
+
             //WT
-            metadata.Variables.Add(new Question
+            metadata.Variables.Add(new Variable
             {
                 Ident = "999999",
                 Type = Enums.VariableType.Quantity,
                 Name = "WT",
                 Label = new Label("Record weight"),
                 Use = Enums.UseType.Weight,
-                Values = new QuestionValues
+                VariableValues = new VariableValues
                 {
                     Range = new ValueRange { From = "0.0000", To = "99.9999" }
                 }
@@ -381,14 +435,11 @@ namespace Data.Repos
         #endregion
 
         #region "Survey Data"
-        /*
         public static List<Interview> LoadAllInterviews()
         {
             var interviews = new List<Interview>
             {
-                MakeDummyInterview1(),
-                MakeDummyInterview2(),
-                MakeDummyInterview3()
+                MakeDummyInterview1()
             };
 
             return interviews;
@@ -406,17 +457,34 @@ namespace Data.Repos
                     new DataItem {Ident = "3", Values = new List<string> {"112000"}},
                     new DataItem {Ident = "4", Values = new List<string> {"0"}},
                     new DataItem {Ident = "5", Values = new List<string> {"1", "3", "5", "9"}},
-                    new DataItem {Ident = "6", Values = new List<string> {"Nottingham Goose Fair"}},
+                    new DataItem {Ident = "6", Values = new List<string> {"Nottingham Goose Fair"}, ParentIdent = new ParentRef { ParentVariableIdent = "5", ParentValueIdent = "9" }},
                     new DataItem {Ident = "7", Values = new List<string> {"2"}},
                     new DataItem {Ident = "8", Values = new List<string> {"5", "1"}},
                     new DataItem {Ident = "9", Values = new List<string> {"25"}},
                     new DataItem {Ident = "10", Values = new List<string> {"1"}},
                     new DataItem {Ident = "11", Values = new List<string> {"A"}},
+                    //Grid [12]
+                    new DataItem {Ident = "13", Values = new List<string> {"5"}},
+                    new DataItem {Ident = "14", Values = new List<string> {"1", "2", "1", "3", "2", "1", "", "" }},
+                    new DataItem {Ident = "15", Values = new List<string> {"1", "3", "4" }},
+                    new DataItem {Ident = "16", Values = new List<string> {"4", "2", "1" }},
+                    new DataItem {Ident = "17", Values = new List<string> {"5"}},
+                    new DataItem {Ident = "18", Values = new List<string> {"1", "4"}},
+                    //Loop [19]
+                    new DataItem {Ident = "20", Values = new List<string> {"I just love learning about mining!"}, ParentIdent = new ParentRef { ParentVariableIdent = "8", ParentValueIdent = "5" }},
+                    new DataItem {Ident = "20", Values = new List<string> {"I'm a big fan of Robin Hood."}, ParentIdent = new ParentRef { ParentVariableIdent = "8", ParentValueIdent = "1" }},
+                    new DataItem {Ident = "21", Values = new List<string> {"1"}, ParentIdent = new ParentRef { ParentVariableIdent = "8", ParentValueIdent = "5" }},
+                    new DataItem {Ident = "21", Values = new List<string> {"2"}, ParentIdent = new ParentRef { ParentVariableIdent = "8", ParentValueIdent = "1" }},
+
+                    new DataItem {Ident = "22", Values = new List<string> {"EN"}},
+
                     new DataItem {Ident = "999999", Values = new List<string> {"1.131"}}
                 }
             };
         }
 
+
+        /*
         private static Interview MakeDummyInterview2()
         {
             return new Interview

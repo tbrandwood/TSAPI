@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 
 namespace Domain.Metadata
 {
@@ -6,7 +7,8 @@ namespace Domain.Metadata
     {
         public string Name { get; set; }
         public string Title { get; set; }
-        public List<Question> Variables { get; set; } = new List<Question>();
+        public List<Variable> Variables { get; set; } = new List<Variable>();
         public int InterviewCount { get; set; }
+        public List<Language> Languages { get; set; }
     }
 }

@@ -19,7 +19,7 @@
 //                Name = "hnumber",
 //                Label = new Label("Household"),
 //                Use = "serial",
-//                Values = new QuestionValues
+//                VariableValues = new VariableValues
 //                {
 //                    Range = new ValueRange { From = "000001", To = "999999" }
 //                }
@@ -32,9 +32,9 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "htype",
 //                Label = new Label("House type"),
-//                Values = new QuestionValues
+//                VariableValues = new VariableValues
 //                {
-//                    Values = new List<Value>
+//                    VariableValues = new List<Value>
 //                        {
 //                            new Value { Code = "1", Text = "Flat or Maisonette" },
 //                            new Value { Code = "2", Text = "Terraced House" },
@@ -51,9 +51,9 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "hlocation",
 //                Label = new Label("House location"),
-//                Values = new QuestionValues
+//                VariableValues = new VariableValues
 //                {
-//                    Values = new List<Value>
+//                    VariableValues = new List<Value>
 //                        {
 //                            new Value { Code = "1", Text = "North" },
 //                            new Value { Code = "2", Text = "South" },
@@ -87,7 +87,7 @@
 //                Type = Variable.VariableType.Quantity,
 //                Name = "hnumber",
 //                Label = new Label("Household"),
-//                Values = new QuestionValues
+//                VariableValues = new VariableValues
 //                {
 //                    Range = new ValueRange { From = "000001", To = "999999" }
 //                }
@@ -101,7 +101,7 @@
 //                Name = "pnumber",
 //                Label = new Label("Person"),
 //                Use = "Serial",
-//                Values = new QuestionValues
+//                VariableValues = new VariableValues
 //                {
 //                    Range = new ValueRange { From = "000001", To = "999999" }
 //                }
@@ -114,9 +114,9 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "pgender",
 //                Label = new Label("Gender"),
-//                Values = new QuestionValues
+//                VariableValues = new VariableValues
 //                {
-//                    Values = new List<Value>
+//                    VariableValues = new List<Value>
 //                    {
 //                        new Value { Code = "1", Text = "Male" },
 //                        new Value { Code = "2", Text = "Female" }
@@ -131,9 +131,9 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "page",
 //                Label = new Label("Age"),
-//                Values = new QuestionValues
+//                VariableValues = new VariableValues
 //                {
-//                    Values = new List<Value>
+//                    VariableValues = new List<Value>
 //                    {
 //                        new Value { Code = "1", Text = "Under 21" },
 //                        new Value { Code = "2", Text = "21 to 45" },
@@ -160,7 +160,7 @@
 //                Type = Variable.VariableType.Quantity,
 //                Name = "pnumber",
 //                Label = new Label("Person"),
-//                Values = new QuestionValues
+//                VariableValues = new VariableValues
 //                {
 //                    Range = new ValueRange { From = "000001", To = "99999919" }
 //                }
@@ -173,9 +173,9 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "tpurpose",
 //                Label = new Label("Trip purpose"),
-//                Values = new QuestionValues
+//                VariableValues = new VariableValues
 //                {
-//                    Values = new List<Value>
+//                    VariableValues = new List<Value>
 //                    {
 //                        new Value { Code = "1", Text = "Social, domestic, pleasure" },
 //                        new Value { Code = "2", Text = "To or from place of work" },
@@ -191,9 +191,9 @@
 //                Type = Variable.VariableType.Single,
 //                Name = "tmode",
 //                Label = new Label("Modes of travel"),
-//                Values = new QuestionValues
+//                VariableValues = new VariableValues
 //                {
-//                    Values = new List<Value>
+//                    VariableValues = new List<Value>
 //                    {
 //                        new Value { Code = "1", Text = "Car or van driver" },
 //                        new Value { Code = "2", Text = "Car or van passenger" },
@@ -227,9 +227,9 @@
 //                Ident = "010001",  //Household 1
 //                DataItems = new List<DataItem>
 //                {
-//                    new DataItem {Ident = "1", Values = new List<string> {"010001"}},
-//                    new DataItem {Ident = "2", Values = new List<string> {"2"}},
-//                    new DataItem {Ident = "3", Values = new List<string> {"3"}}
+//                    new DataItem {Ident = "1", VariableValues = new List<string> {"010001"}},
+//                    new DataItem {Ident = "2", VariableValues = new List<string> {"2"}},
+//                    new DataItem {Ident = "3", VariableValues = new List<string> {"3"}}
 //                },
 //                HierarchicalInterviews = new List<HierarchicalInterview>
 //                {
@@ -239,10 +239,10 @@
 //                        Level = new Level {  Ident = "person" },
 //                        DataItems = new List<DataItem>
 //                        {
-//                            new DataItem { Ident = "1", Values = new List<string> { "010001" }},
-//                            new DataItem { Ident = "2", Values = new List<string> { "01000101" }},
-//                            new DataItem { Ident = "3", Values = new List<string> { "2" }},
-//                            new DataItem { Ident = "4", Values = new List<string> { "2" }}
+//                            new DataItem { Ident = "1", VariableValues = new List<string> { "010001" }},
+//                            new DataItem { Ident = "2", VariableValues = new List<string> { "01000101" }},
+//                            new DataItem { Ident = "3", VariableValues = new List<string> { "2" }},
+//                            new DataItem { Ident = "4", VariableValues = new List<string> { "2" }}
 //                        },
 //                        HierarchicalInterviews = new List<HierarchicalInterview>
 //                        {
@@ -252,9 +252,9 @@
 //                                Level = new Level { Ident = "trip" },
 //                                DataItems = new List<DataItem>
 //                                {
-//                                    new DataItem { Ident = "1", Values = new List<string> { "01000101" }},
-//                                    new DataItem { Ident = "2", Values = new List<string> { "1" }},
-//                                    new DataItem { Ident = "3", Values = new List<string> { "3" }}
+//                                    new DataItem { Ident = "1", VariableValues = new List<string> { "01000101" }},
+//                                    new DataItem { Ident = "2", VariableValues = new List<string> { "1" }},
+//                                    new DataItem { Ident = "3", VariableValues = new List<string> { "3" }}
 //                                }
 //                            },
 //                            new HierarchicalInterview
@@ -263,9 +263,9 @@
 //                                Level = new Level { Ident = "trip" },
 //                                DataItems = new List<DataItem>
 //                                {
-//                                    new DataItem { Ident = "1", Values = new List<string> { "01000102" }},
-//                                    new DataItem { Ident = "2", Values = new List<string> { "1" }},
-//                                    new DataItem { Ident = "3", Values = new List<string> { "2" }}
+//                                    new DataItem { Ident = "1", VariableValues = new List<string> { "01000102" }},
+//                                    new DataItem { Ident = "2", VariableValues = new List<string> { "1" }},
+//                                    new DataItem { Ident = "3", VariableValues = new List<string> { "2" }}
 //                                }
 //                            }
 //                        }
@@ -276,10 +276,10 @@
 //                        Level = new Level {  Ident = "person" },
 //                        DataItems = new List<DataItem>
 //                        {
-//                            new DataItem { Ident = "1", Values = new List<string> { "010001" }},
-//                            new DataItem { Ident = "2", Values = new List<string> { "01000102" }},
-//                            new DataItem { Ident = "3", Values = new List<string> { "1" }},
-//                            new DataItem { Ident = "4", Values = new List<string> { "2" }}
+//                            new DataItem { Ident = "1", VariableValues = new List<string> { "010001" }},
+//                            new DataItem { Ident = "2", VariableValues = new List<string> { "01000102" }},
+//                            new DataItem { Ident = "3", VariableValues = new List<string> { "1" }},
+//                            new DataItem { Ident = "4", VariableValues = new List<string> { "2" }}
 //                        },
 //                        HierarchicalInterviews = new List<HierarchicalInterview>
 //                        {
@@ -289,9 +289,9 @@
 //                                Level = new Level { Ident = "trip" },
 //                                DataItems = new List<DataItem>
 //                                {
-//                                    new DataItem { Ident = "1", Values = new List<string> { "01000102" }},
-//                                    new DataItem { Ident = "2", Values = new List<string> { "2" }},
-//                                    new DataItem { Ident = "3", Values = new List<string> { "4" }}
+//                                    new DataItem { Ident = "1", VariableValues = new List<string> { "01000102" }},
+//                                    new DataItem { Ident = "2", VariableValues = new List<string> { "2" }},
+//                                    new DataItem { Ident = "3", VariableValues = new List<string> { "4" }}
 //                                }
 //                            },
 //                            new HierarchicalInterview
@@ -300,9 +300,9 @@
 //                                Level = new Level { Ident = "trip" },
 //                                DataItems = new List<DataItem>
 //                                {
-//                                    new DataItem { Ident = "1", Values = new List<string> { "01000102" }},
-//                                    new DataItem { Ident = "2", Values = new List<string> { "3" }},
-//                                    new DataItem { Ident = "3", Values = new List<string> { "2" }}
+//                                    new DataItem { Ident = "1", VariableValues = new List<string> { "01000102" }},
+//                                    new DataItem { Ident = "2", VariableValues = new List<string> { "3" }},
+//                                    new DataItem { Ident = "3", VariableValues = new List<string> { "2" }}
 //                                }
 //                            },
 //                            new HierarchicalInterview
@@ -311,9 +311,9 @@
 //                                Level = new Level { Ident = "trip" },
 //                                DataItems = new List<DataItem>
 //                                {
-//                                    new DataItem { Ident = "1", Values = new List<string> { "01000102" }},
-//                                    new DataItem { Ident = "2", Values = new List<string> { "2" }},
-//                                    new DataItem { Ident = "3", Values = new List<string> { "4" }}
+//                                    new DataItem { Ident = "1", VariableValues = new List<string> { "01000102" }},
+//                                    new DataItem { Ident = "2", VariableValues = new List<string> { "2" }},
+//                                    new DataItem { Ident = "3", VariableValues = new List<string> { "4" }}
 //                                }
 //                            },
 //                            new HierarchicalInterview
@@ -322,9 +322,9 @@
 //                                Level = new Level { Ident = "trip" },
 //                                DataItems = new List<DataItem>
 //                                {
-//                                    new DataItem { Ident = "1", Values = new List<string> { "01000102" }},
-//                                    new DataItem { Ident = "2", Values = new List<string> { "1" }},
-//                                    new DataItem { Ident = "3", Values = new List<string> { "1" }}
+//                                    new DataItem { Ident = "1", VariableValues = new List<string> { "01000102" }},
+//                                    new DataItem { Ident = "2", VariableValues = new List<string> { "1" }},
+//                                    new DataItem { Ident = "3", VariableValues = new List<string> { "1" }}
 //                                }
 //                            }
 //                        }
@@ -341,9 +341,9 @@
 //                Ident = "010002",  //Household 2
 //                DataItems = new List<DataItem>
 //                {
-//                    new DataItem {Ident = "1", Values = new List<string> {"010002"}},
-//                    new DataItem {Ident = "2", Values = new List<string> {"3"}},
-//                    new DataItem {Ident = "3", Values = new List<string> {"2"}}
+//                    new DataItem {Ident = "1", VariableValues = new List<string> {"010002"}},
+//                    new DataItem {Ident = "2", VariableValues = new List<string> {"3"}},
+//                    new DataItem {Ident = "3", VariableValues = new List<string> {"2"}}
 //                },
 //                HierarchicalInterviews = new List<HierarchicalInterview>
 //                {
@@ -353,10 +353,10 @@
 //                        Level = new Level {  Ident = "person" },
 //                        DataItems = new List<DataItem>
 //                        {
-//                            new DataItem { Ident = "1", Values = new List<string> { "010002" }},
-//                            new DataItem { Ident = "2", Values = new List<string> { "01000201" }},
-//                            new DataItem { Ident = "3", Values = new List<string> { "1" }},
-//                            new DataItem { Ident = "4", Values = new List<string> { "4" }}
+//                            new DataItem { Ident = "1", VariableValues = new List<string> { "010002" }},
+//                            new DataItem { Ident = "2", VariableValues = new List<string> { "01000201" }},
+//                            new DataItem { Ident = "3", VariableValues = new List<string> { "1" }},
+//                            new DataItem { Ident = "4", VariableValues = new List<string> { "4" }}
 //                        },
 //                        HierarchicalInterviews = new List<HierarchicalInterview>
 //                        {
@@ -366,9 +366,9 @@
 //                                Level = new Level { Ident = "trip" },
 //                                DataItems = new List<DataItem>
 //                                {
-//                                    new DataItem { Ident = "1", Values = new List<string> { "01000201" }},
-//                                    new DataItem { Ident = "2", Values = new List<string> { "2" }},
-//                                    new DataItem { Ident = "3", Values = new List<string> { "1" }}
+//                                    new DataItem { Ident = "1", VariableValues = new List<string> { "01000201" }},
+//                                    new DataItem { Ident = "2", VariableValues = new List<string> { "2" }},
+//                                    new DataItem { Ident = "3", VariableValues = new List<string> { "1" }}
 //                                }
 //                            },
 //                            new HierarchicalInterview
@@ -377,9 +377,9 @@
 //                                Level = new Level { Ident = "trip" },
 //                                DataItems = new List<DataItem>
 //                                {
-//                                    new DataItem { Ident = "1", Values = new List<string> { "01000201" }},
-//                                    new DataItem { Ident = "2", Values = new List<string> { "2" }},
-//                                    new DataItem { Ident = "3", Values = new List<string> { "1" }}
+//                                    new DataItem { Ident = "1", VariableValues = new List<string> { "01000201" }},
+//                                    new DataItem { Ident = "2", VariableValues = new List<string> { "2" }},
+//                                    new DataItem { Ident = "3", VariableValues = new List<string> { "1" }}
 //                                }
 //                            },
 //                            new HierarchicalInterview
@@ -388,9 +388,9 @@
 //                                Level = new Level { Ident = "trip" },
 //                                DataItems = new List<DataItem>
 //                                {
-//                                    new DataItem { Ident = "1", Values = new List<string> { "01000201" }},
-//                                    new DataItem { Ident = "2", Values = new List<string> { "1" }},
-//                                    new DataItem { Ident = "3", Values = new List<string> { "1" }}
+//                                    new DataItem { Ident = "1", VariableValues = new List<string> { "01000201" }},
+//                                    new DataItem { Ident = "2", VariableValues = new List<string> { "1" }},
+//                                    new DataItem { Ident = "3", VariableValues = new List<string> { "1" }}
 //                                }
 //                            }
 //                        }
@@ -401,10 +401,10 @@
 //                        Level = new Level {  Ident = "person" },
 //                        DataItems = new List<DataItem>
 //                        {
-//                            new DataItem { Ident = "1", Values = new List<string> { "010002" }},
-//                            new DataItem { Ident = "2", Values = new List<string> { "01000202" }},
-//                            new DataItem { Ident = "3", Values = new List<string> { "2" }},
-//                            new DataItem { Ident = "4", Values = new List<string> { "3" }}
+//                            new DataItem { Ident = "1", VariableValues = new List<string> { "010002" }},
+//                            new DataItem { Ident = "2", VariableValues = new List<string> { "01000202" }},
+//                            new DataItem { Ident = "3", VariableValues = new List<string> { "2" }},
+//                            new DataItem { Ident = "4", VariableValues = new List<string> { "3" }}
 //                        }
 //                        //No trip data for Person 2
 //                    },
@@ -414,10 +414,10 @@
 //                        Level = new Level {  Ident = "person" },
 //                        DataItems = new List<DataItem>
 //                        {
-//                            new DataItem { Ident = "1", Values = new List<string> { "010002" }},
-//                            new DataItem { Ident = "2", Values = new List<string> { "01000203" }},
-//                            new DataItem { Ident = "3", Values = new List<string> { "1" }},
-//                            new DataItem { Ident = "4", Values = new List<string> { "1" }}
+//                            new DataItem { Ident = "1", VariableValues = new List<string> { "010002" }},
+//                            new DataItem { Ident = "2", VariableValues = new List<string> { "01000203" }},
+//                            new DataItem { Ident = "3", VariableValues = new List<string> { "1" }},
+//                            new DataItem { Ident = "4", VariableValues = new List<string> { "1" }}
 //                        },
 //                        HierarchicalInterviews = new List<HierarchicalInterview>
 //                        {
@@ -427,9 +427,9 @@
 //                                Level = new Level { Ident = "trip" },
 //                                DataItems = new List<DataItem>
 //                                {
-//                                    new DataItem { Ident = "1", Values = new List<string> { "01000203" }},
-//                                    new DataItem { Ident = "2", Values = new List<string> { "1" }},
-//                                    new DataItem { Ident = "3", Values = new List<string> { "1" }}
+//                                    new DataItem { Ident = "1", VariableValues = new List<string> { "01000203" }},
+//                                    new DataItem { Ident = "2", VariableValues = new List<string> { "1" }},
+//                                    new DataItem { Ident = "3", VariableValues = new List<string> { "1" }}
 //                                }
 //                            }
 //                        }
@@ -445,9 +445,9 @@
 //                Ident = "010003",  //Household 3
 //                DataItems = new List<DataItem>
 //                {
-//                    new DataItem {Ident = "1", Values = new List<string> {"010003"}},
-//                    new DataItem {Ident = "2", Values = new List<string> {"1"}},
-//                    new DataItem {Ident = "3", Values = new List<string> {"3"}}
+//                    new DataItem {Ident = "1", VariableValues = new List<string> {"010003"}},
+//                    new DataItem {Ident = "2", VariableValues = new List<string> {"1"}},
+//                    new DataItem {Ident = "3", VariableValues = new List<string> {"3"}}
 //                },
 //                HierarchicalInterviews = new List<HierarchicalInterview>
 //                {
@@ -457,10 +457,10 @@
 //                        Level = new Level {  Ident = "person" },
 //                        DataItems = new List<DataItem>
 //                        {
-//                            new DataItem { Ident = "1", Values = new List<string> { "010003" }},
-//                            new DataItem { Ident = "2", Values = new List<string> { "01000301" }},
-//                            new DataItem { Ident = "3", Values = new List<string> { "2" }},
-//                            new DataItem { Ident = "4", Values = new List<string> { "2" }}
+//                            new DataItem { Ident = "1", VariableValues = new List<string> { "010003" }},
+//                            new DataItem { Ident = "2", VariableValues = new List<string> { "01000301" }},
+//                            new DataItem { Ident = "3", VariableValues = new List<string> { "2" }},
+//                            new DataItem { Ident = "4", VariableValues = new List<string> { "2" }}
 //                        },
 //                        HierarchicalInterviews = new List<HierarchicalInterview>
 //                        {
@@ -470,9 +470,9 @@
 //                                Level = new Level { Ident = "trip" },
 //                                DataItems = new List<DataItem>
 //                                {
-//                                    new DataItem { Ident = "1", Values = new List<string> { "01000301" }},
-//                                    new DataItem { Ident = "2", Values = new List<string> { "2" }},
-//                                    new DataItem { Ident = "3", Values = new List<string> { "3" }}
+//                                    new DataItem { Ident = "1", VariableValues = new List<string> { "01000301" }},
+//                                    new DataItem { Ident = "2", VariableValues = new List<string> { "2" }},
+//                                    new DataItem { Ident = "3", VariableValues = new List<string> { "3" }}
 //                                }
 //                            }
 //                        }

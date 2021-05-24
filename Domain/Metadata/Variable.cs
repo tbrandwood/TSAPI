@@ -1,10 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 
 namespace Domain.Metadata
 {
-    public class Question 
+    public class Variable 
     {
         public string Ident { get; set; }
         public Enums.VariableType Type { get; set; }
@@ -12,17 +11,16 @@ namespace Domain.Metadata
         public string Name { get; set; }
         public Label Label { get; set; }
         public Enums.UseType Use { get; set; }
-        public QuestionValues Values { get; set; }
+        public VariableValues VariableValues { get; set; }
         public Enums.ParentType ParentType { get; set; }
-        public List<Question> Questions { get; set; } = new List<Question>();
+        public List<Variable> Questions { get; set; } = new List<Variable>();
 
         //public string Filter { get; set; }
         //public Enums.Format Format { get; set; }
         //public string ParentIdent { get; set; }
     }
 
-
-    public class QuestionValues
+    public class VariableValues
     {
         public ValueRange Range { get; set; }
         public List<Value> Values { get; set; }
@@ -56,7 +54,7 @@ namespace Domain.Metadata
     {
         public Enums.AltLabelMode Mode { get; set; }
         public string Text { get; set; }
-        public string Lang { get; set; }
+        public string LangIdent { get; set; }
 
     }
 }

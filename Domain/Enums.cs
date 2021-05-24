@@ -4,13 +4,14 @@
     {
         public enum VariableType
         {
-            ClosedEnd = 1,
-            Quantity = 2,
-            Character = 3,
-            Logical = 4,
-            Date = 5,
-            Time = 6,
-            Loop = 7
+            Single = 1,
+            Multiple = 2,
+            Quantity = 3,
+            Character = 4,
+            Logical = 5,
+            Date = 6,
+            Time = 7,
+            Loop = 8
         }
 
         public enum ParentType
@@ -25,7 +26,8 @@
         {
             Serial = 1, 
             Weight = 2,
-            System = 3
+            System = 3,
+            Language = 4
         }
 
         //public enum Format

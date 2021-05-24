@@ -53,21 +53,21 @@ namespace TSAPI.Controllers
             
         }
 
-        ///// <summary>Fetches some interview records for a specific survey</summary>
-        //[HttpGet]
-        //[Route("/Surveys/{surveyId}/Interviews")]
-        //public ActionResult<List<Interview>> Interviews(Guid surveyId, int? start,  int? maxLength)
-        //{
-        //    try
-        //    {
-        //        var data = _surveyRepo.ReadSurveydata(surveyId, start, maxLength);
-        //        return Ok(data);
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return StatusCode(500, e.Message);
-        //    }
-        //}
+        /// <summary>Fetches some interview records for a specific survey</summary>
+        [HttpGet]
+        [Route("/Surveys/{surveyId}/Interviews")]
+        public ActionResult<List<Interview>> Interviews(Guid surveyId, int? start, int? maxLength)
+        {
+            try
+            {
+                var data = _surveyRepo.ReadSurveydata(surveyId, start, maxLength);
+                return Ok(data);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, e.Message);
+            }
+        }
 
         #endregion
 
