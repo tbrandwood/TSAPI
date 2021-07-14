@@ -31,7 +31,7 @@ namespace Domain.Metadata
         public string Ident { get; set; }
         public string Code { get; set; }
         public Label Label { get; set; }
-        public int? Score { get; set; }
+        public float? Score { get; set; }
     }
 
     public class ValueRange
