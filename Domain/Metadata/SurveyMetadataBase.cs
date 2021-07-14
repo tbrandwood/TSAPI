@@ -10,5 +10,7 @@ namespace Domain.Metadata
         public List<Variable> Variables { get; set; } = new List<Variable>();
         public int InterviewCount { get; set; }
         public List<Language> Languages { get; set; }
+        public string NotAsked { get; set; }
+        public string NoAnswer { get; set; }
     }
 }

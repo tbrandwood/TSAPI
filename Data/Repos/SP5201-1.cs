@@ -19,7 +19,10 @@ namespace Data.Repos
                 {
                     new Language {Ident = "FR", Name = "French"}, 
                     new Language {Ident = "EN", Name = "English"}
-                }
+                },
+                NotAsked = "-66",
+                NoAnswer = "-33"
+                //Numeric, Open, Dates
             };
 
             //Available languages 
@@ -465,7 +468,7 @@ namespace Data.Repos
                     new DataItem {Ident = "11", Values = new List<string> {"A"}},
                     //Grid [12]
                     new DataItem {Ident = "13", Values = new List<string> {"5"}},
-                    new DataItem {Ident = "14", Values = new List<string> {"1", "2", "1", "3", "2", "1", "", "" }},
+                    new DataItem {Ident = "14", Values = new List<string> {"1", "2", "1", "3", "", "2", "1", "-33", "-66" }},
                     new DataItem {Ident = "15", Values = new List<string> {"1", "3", "4" }},
                     new DataItem {Ident = "16", Values = new List<string> {"4", "2", "1" }},
                     new DataItem {Ident = "17", Values = new List<string> {"5"}},
