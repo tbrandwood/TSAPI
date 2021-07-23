@@ -13,7 +13,7 @@ namespace Domain.Metadata
         public Enums.UseType Use { get; set; }
         public VariableValues VariableValues { get; set; }
         public Enums.ParentType ParentType { get; set; }
-        public List<Variable> Questions { get; set; } = new List<Variable>();
+        public List<Variable> Variables { get; set; } = new List<Variable>();
 
         //public string Filter { get; set; }
         //public Enums.Format Format { get; set; }
